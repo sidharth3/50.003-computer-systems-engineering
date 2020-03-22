@@ -1,0 +1,8 @@
+# 50005Lab1
+1003647 Sidharth Praveenkumar
+
+For the execution of TODO 1, 2, 3 and 5, I followed the instructions given and was able to successfully pass the test cases as well. The variation in design of the algorithm differs only for TODO 4, ie: the implementation for the revival of worker processes.
+
+In order to assign processes to workers, you first have to check the buffer. With the help of any arbitrary variable, in this case(slotIsFound), it is possible to find out whether there are any free workers available to carry forward a new process. A new job is assigned under the condition that 'shmPTR_jobs_buffer[i].task_status == 0' and that it is alive. If it is dead, then we must revive it and assign the job to it. Implementation of process revival was done using fork(); a similar pattern to how the function create_children() works; a new job is assigned to that specific process.
+
+In order to legally terminate all the workers that are still alive, a simple but effective approach was used. I started with traversing through each process and check whether their status is 0; ie: if they are free and not taken up by any job. If they are, then 'shmPTR_jobs_buffer[i].task_type = 'z'(I assigned z to it), to make sure that the specific worker process was legally terminated. A counter variable was used, initialized to 0 at start and incremements after killing each process, it returns true and breaks the loop if the counter equals the number of all processes, ensuring that it has traversed through all processes alive.
