@@ -1,4 +1,4 @@
-# 50.003-computer-systems-engineering
+# 50.005-computer-systems-engineering
 ### Lab 1
 * Lab assignment that teaches the basics of process management, ie; forking, spawning, terminating and dispatching custom processes in C.  
 * Shows how to use shared memory among processes and protecting shared resources using semaphores.
